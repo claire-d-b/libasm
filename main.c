@@ -138,6 +138,8 @@ printf("%ld\n", ft_write(fd, string, 4));
     printf("%d\n", errno);
     printf("%s\n", strdup((char *)1));
     printf("%d\n", errno);
+
+    retunr (0);
 }*/
 /*
 int fct_strcmp()
@@ -158,6 +160,7 @@ int fct_strcmp()
     printf("%d\n", strcmp("salut tiens toi bien ca va etre long", "ok"));
     printf("%d\n", ft_strcmp((char *)1, "salut"));
     printf("%d\n", strcmp((char *)1, "salut"));
+    return (0);
 }*/
 /*
 int fct_strcpy()
@@ -187,9 +190,10 @@ int fct_strcpy()
     printf("%s\n", strcpy("salut", 0));
     printf("%s\n", ft_strcpy("salut", "hello"));
     printf("%s\n", strcpy("salut", "hello"));
+    return (0);
 }*/
 
-fct_strlen()
+int fct_strlen()
 {
      printf("%ld\n", ft_strlen("hello"));
      printf("%ld\n", strlen("hello"));
@@ -197,8 +201,9 @@ fct_strlen()
      printf("%ld\n", strlen("Calcule moi la longueur de cette interminable chaine"));
      printf("%ld\n", ft_strlen(""));
      printf("%ld\n", strlen(""));
-     printf("%ld\n", ft_strlen(0));
-     printf("%ld\n", strlen(0));
+   //  printf("%ld\n", ft_strlen(0));
+   //  printf("%ld\n", strlen(0));
+     return (0);
 }
 
 int main()
