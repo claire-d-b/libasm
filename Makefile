@@ -4,17 +4,15 @@ FT_STRCPY	= srcs/ft_strcpy.s
 FT_STRDUP	= srcs/ft_strdup.s
 FT_STRLEN	= srcs/ft_strlen.s
 FT_WRITE	= srcs/ft_write.s
-
 ALL_O		= srcs/ft_read.o\
 			srcs/ft_strcmp.o\
 			srcs/ft_strcpy.o\
 			srcs/ft_strdup.o\
 			srcs/ft_strlen.o\
-			srcs/ft_write.o\
+			srcs/ft_write.o
 
 SRC_C		= main.c
-
-OBJ		= $(SRC_C:.c=.o)
+SRC_O	= main.o
 NAME		= libasm.a
 NAME_EXE	= libasm
 CC		= gcc
@@ -24,26 +22,27 @@ RUN_SRC_C		= -c
 INCL		= -include
 HEADER		= libasm.h
 LIB		= ar -rcs
-INCL_LIB	= -I
+INCL_LIB	= -I.
 RM		= rm -f
 CFLAGS		= -Wall -Wextra -Werror
-.c.o:
-		@$(CC) $(RUN_SRC_C) $(CFLAGS) $(SRC_C) $(INCL) $(HEADER)
-obj_asm:	
-		@$(RUN_SRC_ASM) $(FT_READ)
-		@$(RUN_SRC_ASM) $(FT_STRCMP)
-		@$(RUN_SRC_ASM) $(FT_STRCPY)
-		@$(RUN_SRC_ASM) $(FT_STRDUP)
-		@$(RUN_SRC_ASM) $(FT_STRLEN)
-		@$(RUN_SRC_ASM) $(FT_WRITE)
-$(NAME):		obj_asm
+OBJ_ASM	= nasm -f elf64 srcs/ft_read.s &&\
+		nasm -f elf64 srcs/ft_strcmp.s &&\
+		nasm -f elf64 srcs/ft_strcpy.s &&\
+		nasm -f elf64 srcs/ft_strdup.s &&\
+		nasm -f elf64 srcs/ft_strlen.s &&\
+		nasm -f elf64 srcs/ft_write.s
+
+$(NAME):
+			@$(OBJ_ASM)
 			@$(LIB) $(NAME) $(ALL_O)
-all:		$(NAME)
-exe:		$(NAME) $(OBJ)
-		@$(CC) $(INCL_LIB) $(NAME) $(RUN_EXE) $(NAME_EXE) $(ALL_O) $(OBJ)
+$(NAME_EXE):
+			@$(CC) $(RUN_SRC_C) $(CFLAGS) $(SRC_C) $(INCL) $(HEADER)
+			@$(CC) $(INCL_LIB) $(NAME) $(RUN_EXE) $(NAME_EXE) $(ALL_O) $(OBJ)
+all:	$(NAME)
+exe:	$(NAME_EXE)
 clean:
-		@$(RM) $(ALL_O) $(OBJ)
+		@$(RM) $(ALL_O) $(SRC_O)
 fclean:		clean
 		@$(RM) $(NAME) $(NAME_EXE)
 re:			fclean all
-.PHONY:		all clean fclean re exe obj_asm
+.PHONY:		all clean fclean re exe

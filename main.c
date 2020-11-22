@@ -5,10 +5,8 @@ int fct_read()
     int fd;
     int wrong_fd;
     void *string;
-
     fd = open("text1.txt", O_RDWR);
     wrong_fd = open("text.txt", O_RDWR);
-
  //   printf("%ld\n", ft_strlen("hello"));
  //   printf("%s\n", ft_strcpy("heheH", "hello"));
  //   printf("%d\n", ft_strcmp("hello", "salut"));
@@ -59,7 +57,6 @@ printf("%ld\n", ft_read(fd, &string, 4));
  //  __errno_location();
    printf("%d\n", errno);
  //  printf("%s\n", ft_strdup("hello"));
-
     return (0);
 }*/
 /*
@@ -68,10 +65,8 @@ int fct_write()
     int fd;
     int wrong_fd;
     char *string = "hello there";
-
     fd = open("text1.txt", O_RDWR);
     wrong_fd = open("text.txt", O_RDWR);
-
  //   printf("%ld\n", ft_strlen("hello"));
  //   printf("%s\n", ft_strcpy("heheH", "hello"));
  //   printf("%d\n", ft_strcmp("hello", "salut"));
@@ -122,7 +117,6 @@ printf("%ld\n", ft_write(fd, string, 4));
  //  __errno_location();
    printf("%d\n", errno);
  //  printf("%s\n", ft_strdup("hello"));
-
     return (0);
 }*/
 
@@ -138,7 +132,6 @@ printf("%ld\n", ft_write(fd, string, 4));
     printf("%d\n", errno);
     printf("%s\n", strdup((char *)1));
     printf("%d\n", errno);
-
     retunr (0);
 }*/
 /*
@@ -167,7 +160,6 @@ int fct_strcpy()
 {
     char dest[6];
     char dest0[0];
-
     printf("%s\n", ft_strcpy(dest, "hello"));
     printf("%s\n", strcpy(dest, "hello"));
     printf("%s\n", ft_strcpy(dest, "helloa"));
