@@ -35,11 +35,11 @@ OBJ_ASM	= nasm -f elf64 srcs/ft_read.s &&\
 $(NAME):
 			@$(OBJ_ASM)
 			@$(LIB) $(NAME) $(ALL_O)
-$(NAME_EXE):
+$(NAME_EXE):	$(OBJ)
 			@$(CC) $(RUN_SRC_C) $(CFLAGS) $(SRC_C) $(INCL) $(HEADER)
-			@$(CC) $(INCL_LIB) $(NAME) $(RUN_EXE) $(NAME_EXE) $(ALL_O) $(OBJ)
+			@$(CC) $(INCL_LIB) $(NAME) $(RUN_EXE) $(NAME_EXE) $(ALL_O) $(SRC_O)
 all:	$(NAME)
-exe:	$(NAME_EXE)
+exe:	$(NAME) $(NAME_EXE)
 clean:
 		@$(RM) $(ALL_O) $(SRC_O)
 fclean:		clean
