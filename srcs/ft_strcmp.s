@@ -2,52 +2,26 @@
 
 ft_strcmp:
         mov rax, 0
-        mov rcx, 0
-        cmp byte [rdi], 0
-        je rax_neg
-        cmp byte [rsi], 0
-        je rax_pos
-        jmp while
-        while:
-                cmp DIL, SIL
+        mov rbx, 0
+        mov r8, 0
+        while:  
+                mov BL, byte [rdi]
+                mov R8B, byte [rsi]
+                cmp BL, R8B
                 jl inferior
                 jg superior
-                je equal
+                cmp byte [rdi], 0
+                je exit
+                cmp byte [rsi], 0
+                je exit
+                inc rdi
+                inc rsi
+                jmp while
         inferior:
                 mov rax, -1
-                cmp byte [rdi + rcx], 0
-                je exit
-                cmp byte [rsi + rcx], 0
-                je exit
-                inc rcx
-                jmp while
+                jmp exit
         superior:
                 mov rax, 1
-                cmp byte [rdi + rcx], 0
-                je exit
-                cmp byte [rsi + rcx], 0
-                je exit
-                inc rcx
-                jmp while
-        equal:
-                cmp rax, 0
-                je diff_size
-                jne equal_loop
-        diff_size:
-                mov rax, 0
-                jmp equal_loop
-        equal_loop:
-                cmp byte [rdi + rcx], 0
-                je exit
-                cmp byte [rsi + rcx], 0
-                je exit
-                inc rcx
-                jmp while
-        rax_neg:
-                mov rax, -1
                 jmp exit
-        rax_pos:
-                mov rax, 1
-                jmp exit
-        exit:
+        exit:   
                 ret

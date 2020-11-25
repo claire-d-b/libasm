@@ -15,6 +15,7 @@ SRC_C		= main.c
 SRC_O	= main.o
 NAME		= libasm.a
 NAME_EXE	= libasm
+DEBUG	= .gdb_history
 CC		= gcc
 RUN_EXE	= -o
 RUN_SRC_ASM	= nasm -f elf64
@@ -25,12 +26,12 @@ LIB		= ar -rcs
 INCL_LIB	= -I.
 RM		= rm -f
 CFLAGS		= -Wall -Wextra -Werror
-OBJ_ASM	= nasm -f elf64 srcs/ft_read.s &&\
-		nasm -f elf64 srcs/ft_strcmp.s &&\
-		nasm -f elf64 srcs/ft_strcpy.s &&\
-		nasm -f elf64 srcs/ft_strdup.s &&\
-		nasm -f elf64 srcs/ft_strlen.s &&\
-		nasm -f elf64 srcs/ft_write.s
+OBJ_ASM	= nasm -f elf64 -g -F dwarf -o srcs/ft_read.o srcs/ft_read.s &&\
+		nasm -f elf64 -g -F dwarf -o srcs/ft_strcmp.o srcs/ft_strcmp.s &&\
+		nasm -f elf64 -g -F dwarf -o srcs/ft_strcpy.o srcs/ft_strcpy.s &&\
+		nasm -f elf64 -g -F dwarf -o srcs/ft_strdup.o srcs/ft_strdup.s &&\
+		nasm -f elf64 -g -F dwarf -o srcs/ft_strlen.o srcs/ft_strlen.s &&\
+		nasm -f elf64 -g -F dwarf -o srcs/ft_write.o srcs/ft_write.s
 
 $(NAME):
 			@$(OBJ_ASM)
@@ -43,6 +44,6 @@ exe:	$(NAME) $(NAME_EXE)
 clean:
 		@$(RM) $(ALL_O) $(SRC_O)
 fclean:		clean
-		@$(RM) $(NAME) $(NAME_EXE)
+		@$(RM) $(NAME) $(NAME_EXE) $(DEBUG)
 re:			fclean all
 .PHONY:		all clean fclean re exe

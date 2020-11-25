@@ -8,6 +8,6 @@ ft_strlen:
                 cmp BL, 0
                 je exit
                 inc rax
-                loop while
+                jmp while
         exit:
                 ret

@@ -10,12 +10,10 @@ ft_read:
         mov rbx, rax
         cmp rbx, 0
         jl error
-        mov rdi, rsi
-        call ft_strlen
         cmp rax, rdx
-        ja number
-        cmp rax, rdx
+        jg number
         jl eof
+        je number
         jmp exit
         number:
                 mov rax, rdx
