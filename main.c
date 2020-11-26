@@ -6,198 +6,73 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 10:10:31 by user42            #+#    #+#             */
-/*   Updated: 2020/11/23 10:10:37 by user42           ###   ########.fr       */
+/*   Updated: 2020/11/26 16:02:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
 
-int fct_read()
+int	fct_strcmp(void)
 {
-  int fd;
-  int wrong_fd;
-   char *string;
-
-  if (!(string = malloc(sizeof(char) * 10000)))
-    return (0);
-
-  fd = open("text1.txt", O_RDWR);
-  wrong_fd = open("text.txt", O_RDWR);
-
-  printf("%ld\n", ft_read(wrong_fd, string, 4));
-  printf("%d\n", errno);
-  printf("%ld\n", read(wrong_fd, string, 4));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_read(fd, string, 4));
-  printf("%d\n", errno);
-  printf("%ld\n", read(fd, string, 4));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_read(fd, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", read(fd, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_read(fd, string, 0));
-  printf("%d\n", errno);
-  printf("%ld\n", read(fd, string, 0));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_read(2, string, -5));
-  printf("%d\n", errno);
-  printf("%ld\n", read(2, string, -5));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_read(0, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", read(0, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_read(1, string, 0));
-  printf("%d\n", errno);
-  printf("%ld\n", read(1, string, 0));
-  printf("%d\n", errno);
-//  printf("%ld\n", ft_read(fd, "", 150));
-//  printf("%d\n", errno);
-//  printf("%ld\n", read(fd, "", 150));
-//  printf("%d\n", errno);
-//  printf("%ld\n", ft_read(fd, &string, 150));
-//  printf("%d\n", errno);
-//  printf("%ld\n", read(fd, &string, 150));
-//  printf("%d\n", errno);
-  free(string);
-  return (0);
+	printf("%d\n", ft_strcmp("hello", "hello"));
+	printf("%d\n", strcmp("hello", "hello"));
+	printf("%d\n", ft_strcmp("hello", "helloa"));
+	printf("%d\n", strcmp("hello", "helloa"));
+	printf("%d\n", ft_strcmp("helloa", "hello"));
+	printf("%d\n", strcmp("helloa", "hello"));
+	printf("%d\n", ft_strcmp("hello", "hi"));
+	printf("%d\n", strcmp("hello", "hi"));
+	printf("%d\n", ft_strcmp("", "hello"));
+	printf("%d\n", strcmp("", "hello"));
+	printf("%d\n", ft_strcmp("hello", ""));
+	printf("%d\n", strcmp("hello", ""));
+	printf("%d\n", ft_strcmp("salut tiens toi bien ca va etre long", "ok"));
+	printf("%d\n", strcmp("salut tiens toi bien ca va etre long", "ok"));
+	return (0);
 }
 
-int fct_write()
+int	fct_strcpy(void)
 {
-  int fd;
-  int wrong_fd;
-  char *string;
-//  char dest0[0];
-  if (!(string = malloc(sizeof(char) * 10000)))
-    return (0);
-  fd = open("text1.txt", O_RDWR);
-  wrong_fd = open("text.txt", O_RDWR);
-  printf("%ld\n", ft_write(wrong_fd, string, 4));
-  printf("%d\n", errno);
-  printf("%ld\n", write(wrong_fd, string, 4));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_write(fd, string, 4));
-  printf("%d\n", errno);
-  printf("%ld\n", write(fd, string, 4));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_write(fd, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", write(fd, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_write(fd, string, 0));
-  printf("%d\n", errno);
-  printf("%ld\n", write(fd, string, 0));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_write(2, string, -5));
-  printf("%d\n", errno);
-  printf("%ld\n", write(2, string, -5));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_write(0, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", write(0, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_write(1, string, 0));
-  printf("%d\n", errno);
-  printf("%ld\n", write(1, string, 0));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_write(fd, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", write(fd, string, 150));
-  printf("%d\n", errno);
-  printf("%ld\n", ft_write(fd, "", 150));
-  printf("%d\n", errno);
-  printf("%ld\n", write(fd, "", 150));
-  printf("%d\n", errno);
-  free(string);
-  return (0);
+	char *dest;
+
+	if (!(dest = malloc(sizeof(char) * 900)))
+		return (0);
+	printf("%s\n", ft_strcpy(dest, "hello"));
+	printf("%s\n", strcpy(dest, "hello"));
+	printf("%s\n", ft_strcpy(dest, "helloa"));
+	printf("%s\n", strcpy(dest, "helloa"));
+	printf("%s\n", ft_strcpy(dest, "hi"));
+	printf("%s\n", strcpy(dest, "hi"));
+	printf("%s\n", ft_strcpy(dest, ""));
+	printf("%s\n", strcpy(dest, ""));
+	printf("%s\n", ft_strcpy(dest, "salut tiens toi bien ca va etre long"));
+	printf("%s\n", strcpy(dest, "salut tiens toi bien ca va etre long"));
+	free(dest);
+	return (0);
 }
 
-int fct_strdup()
+int	fct_strlen(void)
 {
-  printf("%s\n", ft_strdup("hello"));
-  printf("%s\n", strdup("hello"));
-  printf("%s\n", ft_strdup(""));
-  printf("%s\n", strdup(""));
-  printf("%s\n", ft_strdup("salut tiens toi bien ca va etre long"));
-  printf("%s\n", strdup("salut tiens toi bien ca va etre long"));
-//  printf("%s\n", ft_strdup((char *)1));
-//  printf("%s\n", strdup((char *)1));
-  return (0);
+	printf("%ld\n", ft_strlen("hello"));
+	printf("%ld\n", strlen("hello"));
+	printf("%ld\n", ft_strlen("Calcule moi la longueur de cette\
+	interminable chaine"));
+	printf("%ld\n", strlen("Calcule moi la longueur de cette\
+	interminable chaine"));
+	printf("%ld\n", ft_strlen(""));
+	printf("%ld\n", strlen(""));
+	return (0);
 }
 
-int fct_strcmp()
+int	main(void)
 {
-  printf("%d\n", ft_strcmp("hello", "hello"));
-  printf("%d\n", strcmp("hello", "hello"));
-  printf("%d\n", ft_strcmp("hello", "helloa"));
-  printf("%d\n", strcmp("hello", "helloa"));
-  printf("%d\n", ft_strcmp("helloa", "hello"));
-  printf("%d\n", strcmp("helloa", "hello"));
-  printf("%d\n", ft_strcmp("hello", "hi"));
-  printf("%d\n", strcmp("hello", "hi"));
-  printf("%d\n", ft_strcmp("", "hello"));
-  printf("%d\n", strcmp("", "hello"));
-  printf("%d\n", ft_strcmp("hello", ""));
-  printf("%d\n", strcmp("hello", ""));
-  printf("%d\n", ft_strcmp("salut tiens toi bien ca va etre long", "ok"));
-  printf("%d\n", strcmp("salut tiens toi bien ca va etre long", "ok"));
-//  printf("%d\n", ft_strcmp((char *)1, "salut"));
-//  printf("%d\n", strcmp((char *)1, "salut"));
-  return (0);
-}
-
-int fct_strcpy()
-{
-  char *dest;
-//  char dest0[0];
-  if (!(dest = malloc(sizeof(char) * 900)))
-    return (0);
-  printf("%s\n", ft_strcpy(dest, "hello"));
-  printf("%s\n", strcpy(dest, "hello"));
-  printf("%s\n", ft_strcpy(dest, "helloa"));
-  printf("%s\n", strcpy(dest, "helloa"));
-  printf("%s\n", ft_strcpy(dest, "hi"));
-  printf("%s\n", strcpy(dest, "hi"));
-//  printf("%s\n", ft_strcpy(dest0, "hello"));
-//  printf("%s\n", strcpy(dest0, "hello"));
-  printf("%s\n", ft_strcpy(dest, ""));
-  printf("%s\n", strcpy(dest, ""));
-  printf("%s\n", ft_strcpy(dest, "salut tiens toi bien ca va etre long"));
-  printf("%s\n", strcpy(dest, "salut tiens toi bien ca va etre long"));
-//  printf("%s\n", ft_strcpy((char *)1, "salut"));
-//  printf("%s\n", strcpy((char *)1, "salut"));
-//  printf("%s\n", ft_strcpy(0, "hello"));
-//  printf("%s\n", strcpy(0, "hello"));
-//  printf("%s\n", ft_strcpy("salut", 0));
-//  printf("%s\n", strcpy("salut", 0));
-//  printf("%s\n", ft_strcpy("salut", "hello"));
-//  printf("%s\n", strcpy("salut", "hello"));
-free(dest);
-  return (0);
-}
-
-int fct_strlen()
-{
-  printf("%ld\n", ft_strlen("hello"));
-  printf("%ld\n", strlen("hello"));
-  printf("%ld\n", ft_strlen("Calcule moi la longueur de cette interminable chaine"));
-  printf("%ld\n", strlen("Calcule moi la longueur de cette interminable chaine"));
-  printf("%ld\n", ft_strlen(""));
-  printf("%ld\n", strlen(""));
-//  printf("%ld\n", ft_strlen(0));
-//  printf("%ld\n", strlen(0));
-  return (0);
-}
-
-int main()
-{
-    fct_read();
-    fct_write();
-    fct_strdup();
-    fct_strcmp();
-    fct_strcpy();
-    fct_strlen();
-    return (0);
+	fct_read();
+	fct_read_2();
+	fct_write();
+	fct_write_2();
+	fct_strdup();
+	fct_strcmp();
+	fct_strcpy();
+	fct_strlen();
+	return (0);
 }

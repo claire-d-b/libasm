@@ -12,8 +12,8 @@ ALL_O		= srcs/ft_read.o\
 			srcs/ft_strlen.o\
 			srcs/ft_write.o
 
-SRC_C		= main.c
-SRC_O	= main.o
+SRC_C		= main.c libasm.c
+SRC_O	= main.o libasm.o
 NAME		= libasm.a
 NAME_EXE	= libasm
 DEBUG	= .gdb_history
