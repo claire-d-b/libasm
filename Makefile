@@ -1,9 +1,10 @@
-FT_READ		= srcs/ft_read.s
-FT_STRCMP	= srcs/ft_strcmp.s
-FT_STRCPY	= srcs/ft_strcpy.s
-FT_STRDUP	= srcs/ft_strdup.s
-FT_STRLEN	= srcs/ft_strlen.s
-FT_WRITE	= srcs/ft_write.s
+ALL_C		= srcs/ft_read.s\
+			srcs/ft_strcmp.s\
+			srcs/ft_strcpy.s\
+			srcs/ft_strdup.s\
+			srcs/ft_strlen.s\
+			srcs/ft_write.s
+
 ALL_O		= srcs/ft_read.o\
 			srcs/ft_strcmp.o\
 			srcs/ft_strcpy.o\
@@ -33,10 +34,10 @@ OBJ_ASM	= nasm -f elf64 -g -F dwarf -o srcs/ft_read.o srcs/ft_read.s &&\
 		nasm -f elf64 -g -F dwarf -o srcs/ft_strlen.o srcs/ft_strlen.s &&\
 		nasm -f elf64 -g -F dwarf -o srcs/ft_write.o srcs/ft_write.s
 
-$(NAME):
+$(NAME):	$(ALL_C)
 			@$(OBJ_ASM)
 			@$(LIB) $(NAME) $(ALL_O)
-$(NAME_EXE):	$(OBJ)
+$(NAME_EXE):	$(SRC_C) $(ALL_C)
 			@$(CC) $(RUN_SRC_C) $(CFLAGS) $(SRC_C) $(INCL) $(HEADER)
 			@$(CC) $(INCL_LIB) $(NAME) $(RUN_EXE) $(NAME_EXE) $(ALL_O) $(SRC_O)
 all:	$(NAME)
