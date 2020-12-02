@@ -126,11 +126,24 @@ int		fct_write_2(void)
 
 int		fct_strdup(void)
 {
-	printf("%s\n", ft_strdup("hello"));
-	printf("%s\n", strdup("hello"));
-	printf("%s\n", ft_strdup(""));
-	printf("%s\n", strdup(""));
-	printf("%s\n", ft_strdup("salut tiens toi bien ca va etre long"));
-	printf("%s\n", strdup("salut tiens toi bien ca va etre long"));
+	char *str;
+
+	str = 0;
+	str = ft_strdup("");
+	printf("%s\n", str);
+	free(str);
+	str = 0;
+	str = strdup("");
+	printf("%s\n", str);
+	free(str);
+	str = 0;
+	str = ft_strdup("salut tiens toi bien ca va etre long");
+	printf("%s\n", str);
+	free(str);
+	str = 0;
+	str = strdup("salut tiens toi bien ca va etre long");
+	printf("%s\n", str);
+	free(str);
+	str = 0;
 	return (0);
 }

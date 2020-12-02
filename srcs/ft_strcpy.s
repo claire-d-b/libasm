@@ -4,8 +4,6 @@
 ft_strcpy:
         mov rbx, rdi
         mov rdi, rsi
-        call ft_strlen
-        mov rcx, rax
         mov rdi, rbx
         mov rbx, 0
         mov rax, 0
@@ -15,7 +13,7 @@ ft_strcpy:
                 mov BL, byte [rsi + rax]
                 mov byte [rdi + rax], BL
                 inc rax
-                loop while
+                jmp while
         exit:
                 mov byte [rdi + rax], byte 0
                 push rdi

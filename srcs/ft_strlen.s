@@ -4,9 +4,9 @@ ft_strlen:
         mov rax, 0
         jmp while
         while:
-                mov BL, byte [rdi + rax]
-                cmp BL, 0
+                cmp byte [rdi + rax], 0
                 je exit
+                mov BL, byte [rdi + rax]
                 inc rax
                 jmp while
         exit:
