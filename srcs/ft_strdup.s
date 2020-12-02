@@ -15,8 +15,8 @@ ft_strdup:
         mov rdi, rax
         mov rsi, rbx
         call ft_strcpy
-        pop rsi
         pop rdi
+        pop rsi
         jmp exit
         exit:
                 ret
